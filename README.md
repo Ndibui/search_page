@@ -25,6 +25,6 @@ Limitations
 ************
 >> This method will only work for few results since every item is held in the DOM
 
->>Recommendations
+Recommendations
 ******************
 >> Use a custom filter in a controller and only fetch filtered results.
