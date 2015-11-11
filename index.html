@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>REFUNITE - Search</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> <!-- this is necessary for the material-icons to work -->
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body ng-controller="ResultListCtrl">
+  
+ <!-- navigation starts here -->
+ 
+ <header>
+    <nav class="light-blue lighten-1" role="navigation">
+      <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo"><img src="images/logo-refunite.png"/></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="https://refunite.org">Home</a></li>
+          <li><a href="https://refunite.org/about/">About</a></li>
+          <li><a href="https://refunite.org/technology/">How to Search</a></li>
+        </ul>
+  
+        <ul id="nav-mobile" class="side-nav">
+          <li><a href="https://refunite.org">Home</a></li>
+          <li><a href="https://refunite.org/about/">About</a></li>
+          <li><a href="https://refunite.org/technology/">How to Search</a></li>
+        </ul>
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+      </div>
+    </nav>
+  </header>
+  
+  <!-- body starts here -->
+  
+  <main>
+    <div class="section no-pad-bot" id="index-banner">
+      <div class="container">
+        <br><br>
+        <h3 class="header center orange-text">Searching for family or friends?</h3>
+        <div class="row center">
+          <h5 class="header col s12 light">REFUNITE is here to help. Start your search today!</h5>
+        </div>
+        <div class="row center">
+          <div class="input-field col s12">
+            <input id="search" type="text" class="validate" ng-model="query.$">
+            <label for="search">Enter name, age or country of person you're looking for</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  <!-- results Section -->
+  <!-- ng-show: mockup of a search facility -->
+    <div class="container" ng-show="filtered.length != Results.length && filtered.length != 0 && Results.length != 0" >
+      <div class="section">
+        <div class="row">
+          <h6 class="header col s12 light">Refine your search results</h6>
+        </div>
+        <div class="row center">
+          <div class="input-field col s4">
+            <input id="name" type="text" class="validate" ng-model="query.name">
+            <label for="name">Name</label>
+          </div>
+          <div class="input-field col s4">
+            <input id="country" type="text" class="validate" ng-model="query.location">
+            <label for="country">Country</label>
+          </div>
+          <div class="input-field col s4">
+            <input id="age" type="text" class="validate" ng-model="query.age">
+            <label for="age">Age</label>
+          </div>
+          
+        </div>
+        <ul class="collection" id="results" >
+          <!-- ng-repeat: loop through Results array and list all values, filter values using value entered in search field, order results as defined in dropdown list-->
+          <li class="collection-item avatar" ng-repeat="result in filtered = (Results | filter:query) | orderBy: orderList">
+            <img ng-src="{{result.pic}}" alt="" class="circle">
+            <span class="title">{{result.name}}</span>
+            <p>{{result.age}} years  {{result.gender}} from {{result.location}}</p>
+          </li>
+        </ul>
+      </div>
+      <div class="section" >
+        <div class="card-panel blue lighten-2">We found {{filtered.length}} result(s) matching your search criteria</div><!--total number of search results-->
+      </div>
+    </div>
+  </main>
+  
+  <!-- footer starts here -->
+  
+  <footer class="page-footer pink accent-4">
+    <div class="container">
+      <div class="row">
+        <div class="col s12">
+			<h5 class="white-text">OUR MISSION</h5>
+			<p class="grey-text text-lighten-4">
+				Everyone has the right to know where their family is. This belief is at our core. Our mission is to reconnect refugee families across the globe 
+				with missing loved ones. When families are separated, we put them back in touch. 
+				We empower refugees and displaced people to take the search for missing loved ones into their own hands, 
+				whether through a mobile phone, a computer or one of our free help lines. 
+			</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by Muhinga for <a class="blue-text text-lighten-3" href="https://refunite.org">REFUNITE</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="js/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+  
+  <!-- angularjs js -->
+  <script src="js/angular.min.js"></script>
+  <!-- apps js-->
+  <script src="js/apps.js"></script>
+  </body>
+</html>
