@@ -6,9 +6,6 @@ Enter Name, Age or Country in Search Page
 Sample Countries to use: Somalia, Congo, South Sudan and Syria
 After search, the user can refine the results using the Name, Age and Country - specific search boxes
 
-###### Technology
-AngularJS, Materialize CSS and HTML5
-
 ###### How it works
 Used ng-repeat to loop through results and display as styled
 Used ng-show to only display items after search
